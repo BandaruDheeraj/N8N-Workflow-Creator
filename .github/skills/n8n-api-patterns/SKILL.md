@@ -134,7 +134,7 @@ for c in creds["data"]:
 node["credentials"] = {
     "googleSheetsOAuth2Api": {"id": "<your-credential-id>", "name": "Google Sheets account"},
     "hunterApi": {"id": "<your-credential-id>", "name": "Hunter account"},
-    "openRouterApi": {"id": "abc123", "name": "OpenRouter account"}
+    "openRouterApi": {"id": "<your-credential-id>", "name": "OpenRouter account"}
 }
 ```
 
