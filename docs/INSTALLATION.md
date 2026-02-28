@@ -3,12 +3,12 @@
 ## Claude Code (Plugin)
 
 ```
-/plugin install <owner>/N8N-Workflow-Creator
+/plugin install BandaruDheeraj/N8N-Workflow-Creator
 ```
 
 Or via marketplace:
 ```
-/plugin marketplace add <owner>/N8N-Workflow-Creator
+/plugin marketplace add BandaruDheeraj/N8N-Workflow-Creator
 /plugin install n8n-workflow-creator
 ```
 
@@ -21,13 +21,13 @@ Or via marketplace:
 ## Codex
 
 ```
-Fetch and follow instructions from https://raw.githubusercontent.com/<owner>/N8N-Workflow-Creator/refs/heads/main/.codex/INSTALL.md
+Fetch and follow instructions from https://raw.githubusercontent.com/BandaruDheeraj/N8N-Workflow-Creator/refs/heads/main/.codex/INSTALL.md
 ```
 
 ## OpenCode
 
 ```
-Fetch and follow instructions from https://raw.githubusercontent.com/<owner>/N8N-Workflow-Creator/refs/heads/main/.opencode/INSTALL.md
+Fetch and follow instructions from https://raw.githubusercontent.com/BandaruDheeraj/N8N-Workflow-Creator/refs/heads/main/.opencode/INSTALL.md
 ```
 
 ## GitHub Copilot
@@ -36,7 +36,7 @@ Copy the skills you need into your repo's `.github/agents/` directory:
 
 ```bash
 # Clone
-git clone https://github.com/<owner>/N8N-Workflow-Creator.git
+git clone https://github.com/BandaruDheeraj/N8N-Workflow-Creator.git
 
 # Copy all skills as a single agent file
 cp N8N-Workflow-Creator/skills/*/SKILL.md .github/agents/n8n-workflow-creator.agent.md
@@ -47,7 +47,7 @@ Or reference individual skills in your custom agent configuration.
 ## Manual Installation
 
 ```bash
-git clone https://github.com/<owner>/N8N-Workflow-Creator.git
+git clone https://github.com/BandaruDheeraj/N8N-Workflow-Creator.git
 ```
 
 Then symlink or copy the `skills/` directory to your agent platform's skill location:

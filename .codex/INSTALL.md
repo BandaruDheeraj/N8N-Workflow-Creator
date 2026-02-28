@@ -4,7 +4,7 @@
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/<owner>/N8N-Workflow-Creator.git ~/N8N-Workflow-Creator
+git clone https://github.com/BandaruDheeraj/N8N-Workflow-Creator.git ~/N8N-Workflow-Creator
 
 # 2. Symlink to Codex skills directory
 mkdir -p ~/.agents/skills

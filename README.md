@@ -17,7 +17,7 @@ Installable skills that teach coding agents to **build, test, and debug n8n work
 
 ### Claude Code
 ```
-/plugin install <owner>/N8N-Workflow-Creator
+/plugin install BandaruDheeraj/N8N-Workflow-Creator
 ```
 
 ### Cursor
@@ -27,12 +27,12 @@ Installable skills that teach coding agents to **build, test, and debug n8n work
 
 ### Codex
 ```
-Fetch and follow instructions from https://raw.githubusercontent.com/<owner>/N8N-Workflow-Creator/main/.codex/INSTALL.md
+Fetch and follow instructions from https://raw.githubusercontent.com/BandaruDheeraj/N8N-Workflow-Creator/main/.codex/INSTALL.md
 ```
 
 ### OpenCode
 ```
-Fetch and follow instructions from https://raw.githubusercontent.com/<owner>/N8N-Workflow-Creator/main/.opencode/INSTALL.md
+Fetch and follow instructions from https://raw.githubusercontent.com/BandaruDheeraj/N8N-Workflow-Creator/main/.opencode/INSTALL.md
 ```
 
 ### GitHub Copilot
@@ -40,7 +40,7 @@ Copy `skills/*/SKILL.md` into your repo's `.github/agents/` directory.
 
 ### Manual
 ```bash
-git clone https://github.com/<owner>/N8N-Workflow-Creator.git
+git clone https://github.com/BandaruDheeraj/N8N-Workflow-Creator.git
 # Symlink skills/ into your agent's skill directory
 ```
 
