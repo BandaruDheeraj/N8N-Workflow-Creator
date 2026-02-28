@@ -78,9 +78,9 @@ Paste this prompt into a Copilot CLI session:
 Fetch and follow instructions from https://raw.githubusercontent.com/BandaruDheeraj/N8N-Workflow-Creator/main/.copilot-cli/INSTALL.md
 ```
 
-This installs skills as `*.instructions.md` files in `.github/instructions/n8n/`, which Copilot CLI auto-loads.
+This installs skills as `skills/<name>/SKILL.md` folders in your project root. Copilot CLI auto-discovers them and makes them available as invokable skills (not always-on instructions).
 
-**Global access (all repos):** Place instruction files in `$HOME/.copilot/copilot-instructions.md` (macOS/Linux) or `%USERPROFILE%\.copilot\copilot-instructions.md` (Windows), or set the `COPILOT_CUSTOM_INSTRUCTIONS_DIRS` environment variable. Verify with `/skills` inside a Copilot CLI session.
+> **Note:** Do NOT install these as `*.instructions.md` in `.github/instructions/` — that loads them as always-on context instructions, not on-demand skills.
 
 ---
 
