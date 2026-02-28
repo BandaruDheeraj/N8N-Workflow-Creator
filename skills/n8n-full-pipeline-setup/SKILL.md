@@ -116,35 +116,31 @@ print(f"✅ Loaded workflow {WID}: {wf['name']} ({len(wf['nodes'])} nodes)")
 
 ### Standard Lead Gen Pipeline
 
-This builds the most common pipeline: Form/Webhook Trigger → AI Brand Discovery → Dedup → Hunter Search → Format Results → Google Sheets.
+This builds the most common pipeline: Webhook Trigger → AI Brand Discovery → Dedup → Hunter Search → Format Results → Google Sheets. The webhook trigger accepts JSON via simple POST, making it easy to run programmatically.
 
 ```python
 SHEET_URL = "https://docs.google.com/spreadsheets/d/<doc-id>"
 SHEET_CRED = cred_ref("googleSheetsOAuth2Api")
 HUNTER_CRED = cred_ref("hunterApi")
 
+WEBHOOK_PATH = "lead-gen"  # trigger via POST /webhook/lead-gen
+
 nodes = [
-    # 1. Form Trigger
+    # 1. Webhook Trigger (simple JSON POST — no multipart needed)
     {
-        "parameters": {
-            "formTitle": "Lead Gen",
-            "formFields": {"values": [
-                {"fieldLabel": "Number of brands", "fieldType": "number", "requiredField": True}
-            ]},
-            "options": {}
-        },
-        "type": "n8n-nodes-base.formTrigger",
-        "typeVersion": 2.2,
+        "parameters": {"path": WEBHOOK_PATH, "httpMethod": "POST", "options": {}},
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2,
         "position": [0, 300],
         "id": str(uuid.uuid4()),
-        "name": "Form Trigger",
+        "name": "Webhook Trigger",
         "webhookId": str(uuid.uuid4()),
     },
     # 2. AI Generate Brands (Code node calling OpenRouter)
     {
         "parameters": {
             "jsCode": """
-const count = $input.first().json['Number of brands'] || 10;
+const count = $input.first().json.count || 10;
 
 const resp = await this.helpers.httpRequest({
     method: 'POST',
@@ -260,7 +256,7 @@ return results.length > 0 ? results : [{ json: { _empty: true } }];
 
 # Wire connections: linear pipeline
 connections = {
-    "Form Trigger":      {"main": [[{"node": "AI Generate Brands", "type": "main", "index": 0}]]},
+    "Webhook Trigger":    {"main": [[{"node": "AI Generate Brands", "type": "main", "index": 0}]]},
     "AI Generate Brands": {"main": [[{"node": "Remove Duplicates", "type": "main", "index": 0}]]},
     "Remove Duplicates":  {"main": [[{"node": "Hunter Search", "type": "main", "index": 0}]]},
     "Hunter Search":      {"main": [[{"node": "Format Results", "type": "main", "index": 0}]]},
@@ -303,24 +299,10 @@ known = set(str(e["id"]) for e in requests.get(
     f"{BASE}/api/v1/executions?workflowId={WID}&limit=10", headers=h
 ).json()["data"])
 
-# Trigger the form
-wf_data = requests.get(f"{BASE}/api/v1/workflows/{WID}", headers=h).json()
-trigger = next(n for n in wf_data["nodes"] if "Trigger" in n["type"])
-webhook_id = trigger.get("webhookId", "")
-
-boundary = "----WebKitFormBoundary" + uuid.uuid4().hex[:12]
-body = "\r\n".join([
-    "--" + boundary,
-    'Content-Disposition: form-data; name="field-0"',
-    "",
-    "5",
-    "--" + boundary + "--",
-    ""
-])
+# Trigger the webhook with a simple JSON POST
 resp = requests.post(
-    f"{BASE}/form/{webhook_id}",
-    data=body.encode("utf-8"),
-    headers={"Content-Type": f"multipart/form-data; boundary={boundary}"}
+    f"{BASE}/webhook/{WEBHOOK_PATH}",
+    json={"count": 5}
 )
 print(f"Trigger response: {resp.status_code}")
 # ⚠️ 200 does NOT mean success — must poll executions
@@ -411,20 +393,27 @@ print("✅ Workflow deactivated (safe from accidental triggers)")
 
 ## Pipeline Variations
 
-### Webhook trigger (for API/programmatic use)
+### Form trigger (for browser/human use)
 
-Replace the Form Trigger with a Webhook Trigger:
+Replace the Webhook Trigger with a Form Trigger for a user-facing form:
 ```python
-webhook_trigger = {
-    "parameters": {"path": "lead-gen", "options": {}},
-    "type": "n8n-nodes-base.webhook",
-    "typeVersion": 2,
+form_trigger = {
+    "parameters": {
+        "formTitle": "Lead Gen",
+        "formFields": {"values": [
+            {"fieldLabel": "Number of brands", "fieldType": "number", "requiredField": True}
+        ]},
+        "options": {}
+    },
+    "type": "n8n-nodes-base.formTrigger",
+    "typeVersion": 2.2,
     "position": [0, 300],
     "id": str(uuid.uuid4()),
-    "name": "Webhook Trigger",
+    "name": "Form Trigger",
     "webhookId": str(uuid.uuid4()),
 }
-# Trigger with: POST /webhook/lead-gen {"count": 10}
+# ⚠️ Form triggers require multipart/form-data — see n8n-workflow-testing skill
+# In downstream code: $input.first().json['Number of brands']
 ```
 
 ### Add priority email branch
@@ -447,7 +436,7 @@ See the **n8n-email-outreach** skill for contact ranking and AI email generation
 
 Wire a Read Existing Leads node from the trigger (no output wire — access via `$()` reference):
 ```python
-connections["Form Trigger"]["main"][0].append(
+connections["Webhook Trigger"]["main"][0].append(
     {"node": "Read Existing Leads", "type": "main", "index": 0}
 )
 # In AI Generate Brands code: $('Read Existing Leads').all() for exclusion list
