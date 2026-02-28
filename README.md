@@ -15,6 +15,8 @@ Installable skills that teach coding agents to **build, test, and debug n8n work
 
 ## Install
 
+> **Full install guide with all options:** [docs/INSTALLATION.md](docs/INSTALLATION.md)
+
 ### Claude Code
 ```
 /plugin install BandaruDheeraj/N8N-Workflow-Creator
@@ -35,29 +37,37 @@ Fetch and follow instructions from https://raw.githubusercontent.com/BandaruDhee
 Fetch and follow instructions from https://raw.githubusercontent.com/BandaruDheeraj/N8N-Workflow-Creator/main/.opencode/INSTALL.md
 ```
 
-### GitHub Copilot
-Copy `skills/*/SKILL.md` into your repo's `.github/agents/` directory.
+### GitHub Copilot (Custom Agent)
 
-### GitHub Copilot CLI
+Copy skill files into your repo's `.github/agents/` directory:
+
+**macOS / Linux:**
 ```bash
 git clone https://github.com/BandaruDheeraj/N8N-Workflow-Creator.git
-# Copy skills as instruction files
-mkdir -p .github/instructions/n8n
-cp N8N-Workflow-Creator/skills/*/SKILL.md .github/instructions/n8n/
-# Rename to .instructions.md format
-cd .github/instructions/n8n
-for f in SKILL.md; do true; done
+mkdir -p .github/agents
+for d in N8N-Workflow-Creator/skills/*/; do
+  cp "$d/SKILL.md" ".github/agents/$(basename $d).agent.md"
+done
 ```
-Or one-liner:
-```bash
-git clone https://github.com/BandaruDheeraj/N8N-Workflow-Creator.git && mkdir -p .github/instructions/n8n && for d in N8N-Workflow-Creator/skills/*/; do cp "$d/SKILL.md" ".github/instructions/n8n/$(basename $d).instructions.md"; done
+
+**Windows (PowerShell):**
+```powershell
+git clone https://github.com/BandaruDheeraj/N8N-Workflow-Creator.git
+New-Item -ItemType Directory -Force -Path .github\agents | Out-Null
+Get-ChildItem -Directory N8N-Workflow-Creator\skills | ForEach-Object {
+  Copy-Item "$($_.FullName)\SKILL.md" ".github\agents\$($_.Name).agent.md"
+}
 ```
-Copilot CLI auto-loads all `*.instructions.md` files from `.github/instructions/`.
+
+### GitHub Copilot CLI
+```
+Fetch and follow instructions from https://raw.githubusercontent.com/BandaruDheeraj/N8N-Workflow-Creator/main/.copilot-cli/INSTALL.md
+```
 
 ### Manual
 ```bash
 git clone https://github.com/BandaruDheeraj/N8N-Workflow-Creator.git
-# Symlink skills/ into your agent's skill directory
+# Symlink or copy skills/ into your agent's skill directory
 ```
 
 ## Prerequisites
