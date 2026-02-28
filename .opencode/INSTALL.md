@@ -1,23 +1,37 @@
 # Install N8N Workflow Creator Skills for OpenCode
 
-## Quick Install
+OpenCode loads skills from `.opencode/skills/<name>/SKILL.md` (project-level) or `~/.config/opencode/skills/<name>/SKILL.md` (global).
+
+## Project Install (Recommended)
 
 ```bash
-# 1. Clone the repository
+git clone https://github.com/BandaruDheeraj/N8N-Workflow-Creator.git /tmp/n8n-skills
+mkdir -p .opencode/skills
+cp -r /tmp/n8n-skills/skills/* .opencode/skills/
+rm -rf /tmp/n8n-skills
+```
+
+## Global Install
+
+```bash
 git clone https://github.com/BandaruDheeraj/N8N-Workflow-Creator.git ~/N8N-Workflow-Creator
-
-# 2. Symlink to OpenCode skills directory
 mkdir -p ~/.config/opencode/skills
-ln -s ~/N8N-Workflow-Creator/skills ~/.config/opencode/skills/n8n-workflow-creator
-
-# 3. Verify
-ls ~/.config/opencode/skills/n8n-workflow-creator/
+for d in ~/N8N-Workflow-Creator/skills/*/; do
+  ln -s "$d" ~/.config/opencode/skills/$(basename "$d")
+done
 ```
 
-## Update
+Update global skills with `cd ~/N8N-Workflow-Creator && git pull` — symlinks update instantly.
 
-```bash
-cd ~/N8N-Workflow-Creator && git pull
-```
+## Verify
 
-Skills update instantly via symlink — no restart needed.
+Confirm these 6 skill folders exist:
+
+- `.opencode/skills/n8n-workflow-building/SKILL.md` (or `~/.config/opencode/skills/` for global)
+- `.opencode/skills/n8n-workflow-testing/SKILL.md`
+- `.opencode/skills/n8n-workflow-debugging/SKILL.md`
+- `.opencode/skills/n8n-api-patterns/SKILL.md`
+- `.opencode/skills/n8n-google-sheets/SKILL.md`
+- `.opencode/skills/n8n-email-outreach/SKILL.md`
+
+Start a new OpenCode session — skills should be available when relevant tasks are requested.

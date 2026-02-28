@@ -28,17 +28,25 @@ Or via marketplace:
 
 ## Codex
 
+Paste this prompt into a Codex session:
+
 ```
 Fetch and follow instructions from https://raw.githubusercontent.com/BandaruDheeraj/N8N-Workflow-Creator/refs/heads/main/.codex/INSTALL.md
 ```
+
+This installs skills as `.codex/skills/<name>/SKILL.md` folders in your project. Codex auto-discovers them as invokable skills.
 
 ---
 
 ## OpenCode
 
+Paste this prompt into an OpenCode session:
+
 ```
 Fetch and follow instructions from https://raw.githubusercontent.com/BandaruDheeraj/N8N-Workflow-Creator/refs/heads/main/.opencode/INSTALL.md
 ```
+
+This installs skills as `.opencode/skills/<name>/SKILL.md` folders in your project. OpenCode auto-discovers them as invokable skills.
 
 ---
 
@@ -106,11 +114,12 @@ Copy-Item -Recurse N8N-Workflow-Creator\skills C:\path\to\your\agent\skills\n8n
 
 **Common skill directories by platform:**
 
-| Platform | macOS / Linux | Windows |
-|----------|---------------|---------|
-| Claude Code | `~/.claude/skills/` | `%USERPROFILE%\.claude\skills\` |
-| Codex | `~/.agents/skills/` | `%USERPROFILE%\.agents\skills\` |
-| OpenCode | `~/.config/opencode/skills/` | `%APPDATA%\opencode\skills\` |
+| Platform | Project-level | Global |
+|----------|---------------|--------|
+| Claude Code | `.claude/skills/` | `~/.claude/skills/` |
+| Codex | `.codex/skills/` | `~/.codex/skills/` |
+| OpenCode | `.opencode/skills/` | `~/.config/opencode/skills/` |
+| Copilot CLI | `skills/` | N/A (project-level only) |
 
 ---
 
