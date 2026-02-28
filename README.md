@@ -6,6 +6,7 @@ Installable skills that teach coding agents to **build, test, and debug n8n work
 
 | Skill | What It Teaches |
 |-------|-----------------|
+| **n8n-full-pipeline-setup** | End-to-end setup: environment validation → credentials → build → deploy → test → verify |
 | **n8n-workflow-building** | Create nodes, wire connections, deploy workflows programmatically |
 | **n8n-workflow-testing** | Trigger → poll → validate end-to-end, because 200 ≠ success |
 | **n8n-workflow-debugging** | Trace data flow, find field mismatches, fix silent data loss |
