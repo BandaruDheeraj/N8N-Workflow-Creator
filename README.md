@@ -38,6 +38,22 @@ Fetch and follow instructions from https://raw.githubusercontent.com/BandaruDhee
 ### GitHub Copilot
 Copy `skills/*/SKILL.md` into your repo's `.github/agents/` directory.
 
+### GitHub Copilot CLI
+```bash
+git clone https://github.com/BandaruDheeraj/N8N-Workflow-Creator.git
+# Copy skills as instruction files
+mkdir -p .github/instructions/n8n
+cp N8N-Workflow-Creator/skills/*/SKILL.md .github/instructions/n8n/
+# Rename to .instructions.md format
+cd .github/instructions/n8n
+for f in SKILL.md; do true; done
+```
+Or one-liner:
+```bash
+git clone https://github.com/BandaruDheeraj/N8N-Workflow-Creator.git && mkdir -p .github/instructions/n8n && for d in N8N-Workflow-Creator/skills/*/; do cp "$d/SKILL.md" ".github/instructions/n8n/$(basename $d).instructions.md"; done
+```
+Copilot CLI auto-loads all `*.instructions.md` files from `.github/instructions/`.
+
 ### Manual
 ```bash
 git clone https://github.com/BandaruDheeraj/N8N-Workflow-Creator.git

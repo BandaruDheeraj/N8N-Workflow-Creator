@@ -30,7 +30,7 @@ Fetch and follow instructions from https://raw.githubusercontent.com/BandaruDhee
 Fetch and follow instructions from https://raw.githubusercontent.com/BandaruDheeraj/N8N-Workflow-Creator/refs/heads/main/.opencode/INSTALL.md
 ```
 
-## GitHub Copilot
+## GitHub Copilot (Custom Agent)
 
 Copy the skills you need into your repo's `.github/agents/` directory:
 
@@ -43,6 +43,25 @@ cp N8N-Workflow-Creator/skills/*/SKILL.md .github/agents/n8n-workflow-creator.ag
 ```
 
 Or reference individual skills in your custom agent configuration.
+
+## GitHub Copilot CLI
+
+Copilot CLI auto-loads `*.instructions.md` files from `.github/instructions/` in your repo. Copy each skill as a separate instruction file:
+
+```bash
+# Clone
+git clone https://github.com/BandaruDheeraj/N8N-Workflow-Creator.git
+
+# Copy skills as instruction files
+mkdir -p .github/instructions/n8n
+for d in N8N-Workflow-Creator/skills/*/; do
+  cp "$d/SKILL.md" ".github/instructions/n8n/$(basename $d).instructions.md"
+done
+```
+
+This creates files like `.github/instructions/n8n/n8n-workflow-building.instructions.md` that Copilot CLI picks up automatically.
+
+For global access (all repos), place instruction files in `$HOME/.copilot/copilot-instructions.md` or set the `COPILOT_CUSTOM_INSTRUCTIONS_DIRS` env var. Verify with `/skills` inside a Copilot CLI session.
 
 ## Manual Installation
 
