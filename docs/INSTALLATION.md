@@ -86,9 +86,7 @@ Paste this prompt into a Copilot CLI session:
 Fetch and follow instructions from https://raw.githubusercontent.com/BandaruDheeraj/N8N-Workflow-Creator/main/.copilot-cli/INSTALL.md
 ```
 
-This installs skills as `skills/<name>/SKILL.md` folders in your project root. Copilot CLI auto-discovers them and makes them available as invokable skills (not always-on instructions).
-
-> **Note:** Do NOT install these as `*.instructions.md` in `.github/instructions/` — that loads them as always-on context instructions, not on-demand skills.
+This installs skills as `.github/skills/<name>/SKILL.md` folders (project-level) or `~/.copilot/skills/<name>/SKILL.md` (personal/global). Verify with `/skills list` in a Copilot CLI session.
 
 ---
 
@@ -119,7 +117,7 @@ Copy-Item -Recurse N8N-Workflow-Creator\skills C:\path\to\your\agent\skills\n8n
 | Claude Code | `.claude/skills/` | `~/.claude/skills/` |
 | Codex | `.codex/skills/` | `~/.codex/skills/` |
 | OpenCode | `.opencode/skills/` | `~/.config/opencode/skills/` |
-| Copilot CLI | `skills/` | N/A (project-level only) |
+| Copilot CLI | `.github/skills/` | `~/.copilot/skills/` |
 
 ---
 
