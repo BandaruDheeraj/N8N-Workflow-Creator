@@ -96,7 +96,6 @@ This project is designed to work **alongside** [czlonkowski/n8n-skills](https://
 | **Focus** | Configure n8n correctly | Operate n8n end-to-end |
 | **Covers** | Expressions, node config, validation, JS/Python code | Pipeline setup, testing, debugging, Sheets, email outreach |
 | **Approach** | MCP tool calls via n8n-mcp server | Direct REST API calls (no MCP needed) |
-| **Platforms** | Claude Code | 7 platforms (Claude, Cursor, Codex, OpenCode, Copilot) |
 
 ### Install both
 
