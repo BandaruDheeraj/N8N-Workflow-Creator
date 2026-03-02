@@ -42,6 +42,30 @@ Installable skills that teach coding agents to **build, test, and debug n8n work
 - **n8n instance** (Cloud or self-hosted) with API key
 - **Playwright MCP** (optional, for browser validation)
 
+## 🤝 Use with czlonkowski/n8n-skills
+
+This project is designed to work **alongside** [czlonkowski/n8n-skills](https://github.com/czlonkowski/n8n-skills) — the popular n8n skill set for Claude Code. They're complementary, not competing.
+
+**They teach the agent how to speak n8n** — expression syntax, node configuration, validation errors, MCP tool usage.
+**We teach the agent how to get things done with n8n** — build a pipeline, deploy it, test it end-to-end, debug it when data disappears, get results into Sheets, send outreach emails.
+
+| | czlonkowski/n8n-skills | N8N-Workflow-Creator |
+|---|---|---|
+| **Focus** | Configure n8n correctly | Operate n8n end-to-end |
+| **Covers** | Expressions, node config, validation, JS/Python code | Pipeline setup, testing, debugging, Sheets, email outreach |
+| **Approach** | MCP tool calls via n8n-mcp server | Direct REST API calls (no MCP needed) |
+| **Platforms** | Claude Code | 7 platforms (Claude, Cursor, Codex, OpenCode, Copilot) |
+
+### Install both
+
+```
+# In Claude Code — install both plugins
+/plugin install czlonkowski/n8n-skills
+/plugin install BandaruDheeraj/N8N-Workflow-Creator
+```
+
+With both installed, your agent knows *how to configure nodes correctly* (czlonkowski) **and** *how to build, deploy, test, and debug complete workflows* (this project). The combination covers the full n8n development lifecycle — from writing a correct expression to verifying data landed in your Google Sheet.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
