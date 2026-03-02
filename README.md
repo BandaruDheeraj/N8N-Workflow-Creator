@@ -2,6 +2,47 @@
 
 Installable skills that teach coding agents to **build, test, and debug n8n workflows via the REST API** — no browser UI needed. Built from battle-tested production workflows.
 
+## How It Works
+
+You describe what you want in plain English. The skills auto-activate based on your prompt — no manual invocation needed.
+
+### 1. Describe your workflow
+
+> *"Build me an n8n workflow that takes a list of company domains, finds contacts via Hunter.io, scores them, generates personalized cold emails, and writes everything to a Google Sheet for mail merge."*
+
+### 2. Skills chain automatically
+
+| Phase | Skill That Fires | What It Does |
+|-------|-------------------|--------------|
+| **Environment check** | `n8n-full-pipeline-setup` | Validates n8n is reachable, discovers credentials, plans the node pipeline |
+| **Build** | `n8n-workflow-building` | Creates nodes, wires connections, deploys via REST API |
+| **Domain logic** | `n8n-api-patterns` | Handles Code node HTTP calls, LLM parallelization, 60s timeout batching |
+| **Email gen** | `n8n-email-outreach` | Hunter.io verification, contact ranking, AI email humanization |
+| **Sheet output** | `n8n-google-sheets` | Appends rows, creates tabs, handles column alignment |
+| **Test** | `n8n-workflow-testing` | Triggers execution, polls status, validates node-by-node output |
+| **Debug** | `n8n-workflow-debugging` | Only fires if something fails — traces data flow, finds the break |
+
+### 3. Verify acceptance criteria
+
+Ask the agent to confirm the output:
+
+> *"Verify the data reached the Google Sheet and show me what's in the output tab."*
+
+### 4. Iterate if needed
+
+> *"The Hunter Search node is returning 0 items — debug it."*
+
+The debugging skill traces the data flow and finds the field mismatch.
+
+### Tips
+
+- **Be specific about acceptance criteria upfront** — e.g. *"...and I need at least 3 verified contacts per company written to the sheet"* — so the testing skill knows what to validate.
+- **You can invoke a skill explicitly** if auto-detection misses — just mention the topic (*"debug why node X produces 0 items"* → debugging skill, *"test the workflow end-to-end"* → testing skill).
+- **The full-pipeline skill is the orchestrator** — say *"build me a workflow from scratch"* and it coordinates all the other skills in the right order.
+- **You don't need to run skills one-at-a-time** — describe the whole goal and let the agent plan the sequence.
+
+---
+
 ## What You Get
 
 | Skill | What It Teaches |
