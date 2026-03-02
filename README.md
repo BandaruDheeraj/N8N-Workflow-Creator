@@ -54,6 +54,7 @@ The debugging skill traces the data flow and finds the field mismatch.
 | **n8n-api-patterns** | Code node HTTP, LLM parallelization, 60s timeout workarounds |
 | **n8n-google-sheets** | Append, update, batch ops, cleanup, rate limiting |
 | **n8n-email-outreach** | Hunter.io verification, contact ranking, AI cold emails, mail merge |
+| **n8n-exa-instagram-discovery** | Find real Instagram profiles via Exa Search API, handle extraction, brand filtering |
 
 ## Install
 

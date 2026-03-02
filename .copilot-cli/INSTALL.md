@@ -6,7 +6,7 @@
 copilot plugin install BandaruDheeraj/N8N-Workflow-Creator
 ```
 
-This reads `plugin.json` and registers all 7 skills automatically. Verify with `copilot plugin list`.
+This reads `plugin.json` and registers all 8 skills automatically. Verify with `copilot plugin list`.
 
 ## Skill Install (Manual)
 
@@ -59,7 +59,7 @@ Remove-Item -Recurse -Force "$env:TEMP\n8n-skills"
 
 ## Verify
 
-After installing, run `/skills list` in a Copilot CLI session. You should see all 7 skills:
+After installing, run `/skills list` in a Copilot CLI session. You should see all 8 skills:
 
 - `n8n-full-pipeline-setup`
 - `n8n-workflow-building`
@@ -68,6 +68,7 @@ After installing, run `/skills list` in a Copilot CLI session. You should see al
 - `n8n-api-patterns`
 - `n8n-google-sheets`
 - `n8n-email-outreach`
+- `n8n-exa-instagram-discovery`
 
 You can also verify the files exist:
 
@@ -79,6 +80,7 @@ You can also verify the files exist:
 - `.github/skills/n8n-api-patterns/SKILL.md`
 - `.github/skills/n8n-google-sheets/SKILL.md`
 - `.github/skills/n8n-email-outreach/SKILL.md`
+- `.github/skills/n8n-exa-instagram-discovery/SKILL.md`
 
 **Personal install:**
 - `~/.copilot/skills/n8n-workflow-building/SKILL.md` (same names)

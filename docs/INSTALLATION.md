@@ -1,6 +1,6 @@
 # Installation Guide
 
-All methods below install the same 7 skills. Pick the one that matches your tool.
+All methods below install the same 8 skills. Pick the one that matches your tool.
 
 ---
 
@@ -14,7 +14,7 @@ One-command install — the plugin manifest handles discovery and registration a
 /plugin install BandaruDheeraj/N8N-Workflow-Creator
 ```
 
-Claude Code reads `.claude-plugin/plugin.json` and registers all 7 skills. No manual file copying needed.
+Claude Code reads `.claude-plugin/plugin.json` and registers all 8 skills. No manual file copying needed.
 
 ### GitHub Copilot CLI
 
@@ -22,7 +22,7 @@ Claude Code reads `.claude-plugin/plugin.json` and registers all 7 skills. No ma
 copilot plugin install BandaruDheeraj/N8N-Workflow-Creator
 ```
 
-Copilot CLI reads `plugin.json` at the repo root and registers all 7 skills. Verify with `copilot plugin list`.
+Copilot CLI reads `plugin.json` at the repo root and registers all 8 skills. Verify with `copilot plugin list`.
 
 ### Cursor
 
