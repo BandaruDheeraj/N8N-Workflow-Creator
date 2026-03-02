@@ -1,0 +1,22 @@
+{
+  "name": "n8n-workflow-creator",
+  "version": "1.0.0",
+  "description": "Skills that teach coding agents to build, test, and debug n8n workflows via the REST API — no browser UI needed.",
+  "keywords": ["n8n", "workflow", "automation", "api", "testing", "debugging"],
+  "author": {
+    "name": "BandaruDheeraj",
+    "url": "https://github.com/BandaruDheeraj"
+  },
+  "homepage": "https://github.com/BandaruDheeraj/N8N-Workflow-Creator",
+  "repository": "https://github.com/BandaruDheeraj/N8N-Workflow-Creator",
+  "license": "MIT",
+  "skills": [
+    "./skills/n8n-api-patterns/",
+    "./skills/n8n-email-outreach/",
+    "./skills/n8n-full-pipeline-setup/",
+    "./skills/n8n-google-sheets/",
+    "./skills/n8n-workflow-building/",
+    "./skills/n8n-workflow-debugging/",
+    "./skills/n8n-workflow-testing/"
+  ]
+}

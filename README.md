@@ -18,58 +18,23 @@ Installable skills that teach coding agents to **build, test, and debug n8n work
 
 > **Full install guide with all options:** [docs/INSTALLATION.md](docs/INSTALLATION.md)
 
-### Claude Code
-```
-/plugin install BandaruDheeraj/N8N-Workflow-Creator
-```
+### Plugin Install (one command)
 
-### Cursor
-```
-/plugin-add n8n-workflow-creator
-```
+| Platform | Command |
+|----------|---------|
+| **Claude Code** | `/plugin install BandaruDheeraj/N8N-Workflow-Creator` |
+| **GitHub Copilot CLI** | `copilot plugin install BandaruDheeraj/N8N-Workflow-Creator` |
+| **Cursor** | `/plugin-add n8n-workflow-creator` |
 
-### Codex
-```
-Fetch and follow instructions from https://raw.githubusercontent.com/BandaruDheeraj/N8N-Workflow-Creator/main/.codex/INSTALL.md
-```
+### Skill Install (copy files)
 
-### OpenCode
-```
-Fetch and follow instructions from https://raw.githubusercontent.com/BandaruDheeraj/N8N-Workflow-Creator/main/.opencode/INSTALL.md
-```
-
-### GitHub Copilot (Custom Agent)
-
-Copy skill files into your repo's `.github/agents/` directory:
-
-**macOS / Linux:**
-```bash
-git clone https://github.com/BandaruDheeraj/N8N-Workflow-Creator.git
-mkdir -p .github/agents
-for d in N8N-Workflow-Creator/skills/*/; do
-  cp "$d/SKILL.md" ".github/agents/$(basename $d).agent.md"
-done
-```
-
-**Windows (PowerShell):**
-```powershell
-git clone https://github.com/BandaruDheeraj/N8N-Workflow-Creator.git
-New-Item -ItemType Directory -Force -Path .github\agents | Out-Null
-Get-ChildItem -Directory N8N-Workflow-Creator\skills | ForEach-Object {
-  Copy-Item "$($_.FullName)\SKILL.md" ".github\agents\$($_.Name).agent.md"
-}
-```
-
-### GitHub Copilot CLI
-```
-Fetch and follow instructions from https://raw.githubusercontent.com/BandaruDheeraj/N8N-Workflow-Creator/main/.copilot-cli/INSTALL.md
-```
-
-### Manual
-```bash
-git clone https://github.com/BandaruDheeraj/N8N-Workflow-Creator.git
-# Symlink or copy skills/ into your agent's skill directory
-```
+| Platform | Method |
+|----------|--------|
+| **Codex** | `Fetch and follow instructions from https://raw.githubusercontent.com/BandaruDheeraj/N8N-Workflow-Creator/main/.codex/INSTALL.md` |
+| **OpenCode** | `Fetch and follow instructions from https://raw.githubusercontent.com/BandaruDheeraj/N8N-Workflow-Creator/main/.opencode/INSTALL.md` |
+| **Copilot CLI (skills)** | `Fetch and follow instructions from https://raw.githubusercontent.com/BandaruDheeraj/N8N-Workflow-Creator/main/.copilot-cli/INSTALL.md` |
+| **Copilot Custom Agent** | Copy skills to `.github/agents/` — see [docs/INSTALLATION.md](docs/INSTALLATION.md) |
+| **Manual** | `git clone` + copy `skills/` into your agent's skill directory |
 
 ## Prerequisites
 

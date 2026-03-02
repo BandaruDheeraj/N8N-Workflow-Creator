@@ -25,9 +25,10 @@ Update global skills with `cd ~/N8N-Workflow-Creator && git pull` — symlinks u
 
 ## Verify
 
-Confirm these 6 skill folders exist:
+Confirm these 7 skill folders exist:
 
-- `.codex/skills/n8n-workflow-building/SKILL.md` (or `~/.codex/skills/` for global)
+- `.codex/skills/n8n-full-pipeline-setup/SKILL.md` (or `~/.codex/skills/` for global)
+- `.codex/skills/n8n-workflow-building/SKILL.md`
 - `.codex/skills/n8n-workflow-testing/SKILL.md`
 - `.codex/skills/n8n-workflow-debugging/SKILL.md`
 - `.codex/skills/n8n-api-patterns/SKILL.md`

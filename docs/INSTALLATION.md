@@ -1,24 +1,30 @@
 # Installation Guide
 
-All methods below install the same 6 skills. Pick the one that matches your tool.
+All methods below install the same 7 skills. Pick the one that matches your tool.
 
 ---
 
-## Claude Code (Plugin)
+## Plugin Install (Recommended)
+
+One-command install — the plugin manifest handles discovery and registration automatically.
+
+### Claude Code
 
 ```
 /plugin install BandaruDheeraj/N8N-Workflow-Creator
 ```
 
-Or via marketplace:
+Claude Code reads `.claude-plugin/plugin.json` and registers all 7 skills. No manual file copying needed.
+
+### GitHub Copilot CLI
+
 ```
-/plugin marketplace add BandaruDheeraj/N8N-Workflow-Creator
-/plugin install n8n-workflow-creator
+copilot plugin install BandaruDheeraj/N8N-Workflow-Creator
 ```
 
----
+Copilot CLI reads `plugin.json` at the repo root and registers all 7 skills. Verify with `copilot plugin list`.
 
-## Cursor
+### Cursor
 
 ```
 /plugin-add n8n-workflow-creator
@@ -26,7 +32,11 @@ Or via marketplace:
 
 ---
 
-## Codex
+## Skill Install (Copy Files)
+
+For platforms without plugin support, or if you prefer manual control.
+
+### Codex
 
 Paste this prompt into a Codex session:
 
@@ -36,9 +46,7 @@ Fetch and follow instructions from https://raw.githubusercontent.com/BandaruDhee
 
 This installs skills as `.codex/skills/<name>/SKILL.md` folders in your project. Codex auto-discovers them as invokable skills.
 
----
-
-## OpenCode
+### OpenCode
 
 Paste this prompt into an OpenCode session:
 
@@ -48,13 +56,11 @@ Fetch and follow instructions from https://raw.githubusercontent.com/BandaruDhee
 
 This installs skills as `.opencode/skills/<name>/SKILL.md` folders in your project. OpenCode auto-discovers them as invokable skills.
 
----
-
-## GitHub Copilot (Custom Agent)
+### GitHub Copilot (Custom Agent)
 
 Skills are loaded as `.agent.md` files in your repo's `.github/agents/` directory.
 
-### macOS / Linux
+#### macOS / Linux
 
 ```bash
 git clone https://github.com/BandaruDheeraj/N8N-Workflow-Creator.git
@@ -64,7 +70,7 @@ for d in N8N-Workflow-Creator/skills/*/; do
 done
 ```
 
-### Windows (PowerShell)
+#### Windows (PowerShell)
 
 ```powershell
 git clone https://github.com/BandaruDheeraj/N8N-Workflow-Creator.git
@@ -76,11 +82,9 @@ Get-ChildItem -Directory N8N-Workflow-Creator\skills | ForEach-Object {
 
 This creates files like `.github/agents/n8n-workflow-building.agent.md`.
 
----
+### GitHub Copilot CLI (Skills Only)
 
-## GitHub Copilot CLI
-
-Paste this prompt into a Copilot CLI session:
+If you prefer skills over the plugin install:
 
 ```
 Fetch and follow instructions from https://raw.githubusercontent.com/BandaruDheeraj/N8N-Workflow-Creator/main/.copilot-cli/INSTALL.md

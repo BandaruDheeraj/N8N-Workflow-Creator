@@ -1,4 +1,14 @@
-# Install N8N Workflow Creator Skills for GitHub Copilot CLI
+# Install N8N Workflow Creator for GitHub Copilot CLI
+
+## Plugin Install (Recommended)
+
+```
+copilot plugin install BandaruDheeraj/N8N-Workflow-Creator
+```
+
+This reads `plugin.json` and registers all 7 skills automatically. Verify with `copilot plugin list`.
+
+## Skill Install (Manual)
 
 Copilot CLI discovers project skills from `.github/skills/<name>/SKILL.md` and personal skills from `~/.copilot/skills/<name>/SKILL.md`.
 
@@ -49,8 +59,9 @@ Remove-Item -Recurse -Force "$env:TEMP\n8n-skills"
 
 ## Verify
 
-After installing, run `/skills list` in a Copilot CLI session. You should see all 6 skills:
+After installing, run `/skills list` in a Copilot CLI session. You should see all 7 skills:
 
+- `n8n-full-pipeline-setup`
 - `n8n-workflow-building`
 - `n8n-workflow-testing`
 - `n8n-workflow-debugging`
@@ -61,6 +72,7 @@ After installing, run `/skills list` in a Copilot CLI session. You should see al
 You can also verify the files exist:
 
 **Project install:**
+- `.github/skills/n8n-full-pipeline-setup/SKILL.md`
 - `.github/skills/n8n-workflow-building/SKILL.md`
 - `.github/skills/n8n-workflow-testing/SKILL.md`
 - `.github/skills/n8n-workflow-debugging/SKILL.md`
